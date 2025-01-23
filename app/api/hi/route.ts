@@ -3,3 +3,9 @@ export async function GET() {
     status: 200,
   });
 }
+
+export async function POST() {
+  return new Response("I'm posting something to this handler", {
+    status: 200,
+  });
+}
