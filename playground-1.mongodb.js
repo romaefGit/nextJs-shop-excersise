@@ -10,7 +10,7 @@
 // https://www.mongodb.com/docs/mongodb-vscode/playgrounds/
 
 // Select the database to use.
-use("mongodbVSCodePlaygroundDB");
+use("db-shop-nextjs");
 
 db.getCollection("carts").insertMany([
   {
