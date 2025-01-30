@@ -1,13 +1,17 @@
-import ProductList from "../ProductList";
-import { products } from "../product-data";
+"use client";
+import ProductsList from "../ProductList";
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const response = await fetch("http://localhost:3000/api/products");
+  const products = await response.json();
+
+  const responseCart = await fetch("http://localhost:3000/api/users/2/cart");
+  const cartProducts = await responseCart.json();
+
   return (
-    <>
-      <div className="container mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-8">Products</h1>
-        <ProductList products={products} />
-      </div>
-    </>
+    <div className="container mx-auto p-8">
+      <h1 className="text-4xl font-bold mb-8">Products</h1>
+      <ProductsList products={products} initialCartProducts={cartProducts} />
+    </div>
   );
 }
