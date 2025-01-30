@@ -10,7 +10,6 @@ export default function ShoppingCartList({
   initialCartProducts: Product[];
 }) {
   const [cartProducts, setCartProducts] = useState(initialCartProducts);
-
   async function removeFromCart(productId: string) {
     const response = await fetch("http://localhost:3000/api/users/2/cart", {
       method: "DELETE",

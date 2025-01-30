@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -82,7 +81,7 @@ export default function ProductsList({
                 </button>
               ) : (
                 <button
-                  className="bg-gray-600 hover:bg-lime-700 px-4 py-2 mt-4 rounded-md"
+                  className="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 mt-4 rounded-md"
                   onClick={(e) => {
                     e.preventDefault();
                     addToCart(product.id);

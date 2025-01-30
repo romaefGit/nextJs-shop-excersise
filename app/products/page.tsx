@@ -1,17 +1,32 @@
-"use client";
 import ProductsList from "../ProductList";
+import { Product } from "../product-data";
+
+async function getProducts(): Promise<Product[]> {
+  const response = await fetch("http://localhost:3000/api/products", {
+    cache: "no-store", // Ensures fresh data
+  });
+
+  if (!response.ok) throw new Error("Products not found");
+  return response.json();
+}
+
+async function getCart(): Promise<Product[]> {
+  const response = await fetch("http://localhost:3000/api/users/2/cart", {
+    cache: "no-store",
+  });
+
+  if (!response.ok) throw new Error("Cart fetch failed");
+  return response.json();
+}
 
 export default async function ProductsPage() {
-  const response = await fetch("http://localhost:3000/api/products");
-  const products = await response.json();
-
-  const responseCart = await fetch("http://localhost:3000/api/users/2/cart");
-  const cartProducts = await responseCart.json();
+  const productsData = await getProducts();
+  const cartData = await getCart();
 
   return (
     <div className="container mx-auto p-8">
       <h1 className="text-4xl font-bold mb-8">Products</h1>
-      <ProductsList products={products} initialCartProducts={cartProducts} />
+      <ProductsList products={productsData} initialCartProducts={cartData} />
     </div>
   );
 }
