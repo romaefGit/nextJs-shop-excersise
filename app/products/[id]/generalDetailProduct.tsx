@@ -45,7 +45,7 @@ export default async function GeneralDetailProduct({
         <p className="text-gray-700">{productDetail.description}</p>
         <button
           className="bg-gray-600 px-4 py-2 mt-4 rounded-md"
-          onClick={() => addToCart(productDetail.id)}
+          onClick={(e) => addToCart(productDetail.id)}
         >
           Add to Cart
         </button>

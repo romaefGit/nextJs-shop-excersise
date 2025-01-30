@@ -28,6 +28,24 @@ export default function ProductsList({
     setCartProducts(updatedCartProducts);
   }
 
+  async function removeFromCart(productId: string) {
+    const response = await fetch("http://localhost:3000/api/users/2/cart", {
+      method: "DELETE",
+      body: JSON.stringify({
+        productId,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const updatedCartProducts = await response.json();
+    setCartProducts(updatedCartProducts);
+  }
+
+  function productIsInCart(productId: string) {
+    return cartProducts.some((cp) => cp.id === productId);
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       {products.map((product) => (
@@ -51,12 +69,29 @@ export default function ProductsList({
               {product.name}
             </h2>
             <p className="text-gray-600">${product.price}</p>
-            <button
-              className="bg-gray-600 px-4 py-2 mt-4 rounded-md"
-              onClick={() => addToCart(product.id)}
-            >
-              Add to Cart
-            </button>
+            <>
+              {productIsInCart(product.id) ? (
+                <button
+                  className="bg-red-600 hover:bg-red-700 px-4 py-2 mt-4 rounded-md"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    removeFromCart(product.id);
+                  }}
+                >
+                  Remove from Cart
+                </button>
+              ) : (
+                <button
+                  className="bg-gray-600 hover:bg-lime-700 px-4 py-2 mt-4 rounded-md"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addToCart(product.id);
+                  }}
+                >
+                  Add to Cart
+                </button>
+              )}
+            </>
           </Link>
         </>
       ))}
