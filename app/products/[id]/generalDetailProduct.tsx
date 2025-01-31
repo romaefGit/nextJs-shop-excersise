@@ -83,7 +83,7 @@ export default function GeneralDetailProduct({
         <h3 className="text-2xl font-semibold mb-2">Description</h3>
         <p className="text-gray-700">{productDetail.description}</p>
 
-        {productIsInCart(productDetail.id) ? (
+        {/* {productIsInCart(productDetail.id) ? (
           <button
             className="bg-red-600 hover:bg-red-700 px-4 py-2 mt-4 rounded-md"
             onClick={(e) => {
@@ -103,7 +103,7 @@ export default function GeneralDetailProduct({
           >
             Add to Cart
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );
