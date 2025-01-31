@@ -31,7 +31,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Demo
 
-You can se the Demo live working here:
+You can see the Demo live working here:
 
 - [NextJs - Shop](https://next-js-shop-excersise.vercel.app/)
 
