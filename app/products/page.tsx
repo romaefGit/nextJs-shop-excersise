@@ -1,19 +1,27 @@
 import ProductsList from "../ProductList";
 import { Product } from "../product-data";
 
+export const dynamic = "force-dynamic";
+
 async function getProducts(): Promise<Product[]> {
-  const response = await fetch("http://localhost:3000/api/products", {
-    cache: "no-store", // Ensures fresh data
-  });
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/products",
+    {
+      cache: "no-store", // Ensures fresh data
+    }
+  );
 
   if (!response.ok) throw new Error("Products not found");
   return response.json();
 }
 
 async function getCart(): Promise<Product[]> {
-  const response = await fetch("http://localhost:3000/api/users/2/cart", {
-    cache: "no-store",
-  });
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/users/2/cart",
+    {
+      cache: "no-store",
+    }
+  );
 
   if (!response.ok) throw new Error("Cart fetch failed");
   return response.json();

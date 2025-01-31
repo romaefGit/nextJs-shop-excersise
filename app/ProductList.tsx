@@ -14,29 +14,35 @@ export default function ProductsList({
   const [cartProducts, setCartProducts] = useState(initialCartProducts);
 
   async function addToCart(productId: string) {
-    const response = await fetch("http://localhost:3000/api/users/2/cart", {
-      method: "POST",
-      body: JSON.stringify({
-        productId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_SITE_URL + "/api/users/2/cart",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          productId,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const updatedCartProducts = await response.json();
     setCartProducts(updatedCartProducts);
   }
 
   async function removeFromCart(productId: string) {
-    const response = await fetch("http://localhost:3000/api/users/2/cart", {
-      method: "DELETE",
-      body: JSON.stringify({
-        productId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_SITE_URL + "/api/users/2/cart",
+      {
+        method: "DELETE",
+        body: JSON.stringify({
+          productId,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const updatedCartProducts = await response.json();
     setCartProducts(updatedCartProducts);
   }

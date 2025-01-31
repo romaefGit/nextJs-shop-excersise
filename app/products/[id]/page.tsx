@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import NotFoundPage from "@/app/not-found";
 import GeneralDetailProduct from "./generalDetailProduct";
 
+export const dynamic = "force-dynamic";
+
 export default function ProductDetailPage({
   params,
 }: {
@@ -17,7 +19,7 @@ export default function ProductDetailPage({
       try {
         // Fetch product details
         const productResponse = await fetch(
-          `http://localhost:3000/api/products/${params.id}`
+          `${process.env.NEXT_PUBLIC_SITE_URL}/api/products/${params.id}`
         );
         if (!productResponse.ok) throw new Error("Product not found");
         const productData = await productResponse.json();
@@ -25,7 +27,7 @@ export default function ProductDetailPage({
 
         // Fetch initial cart products
         const cartResponse = await fetch(
-          "http://localhost:3000/api/users/2/cart"
+          `${process.env.NEXT_PUBLIC_SITE_URL}/api/users/2/cart`
         );
         if (!cartResponse.ok) throw new Error("Cart fetch failed");
         const cartData = await cartResponse.json();
