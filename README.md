@@ -18,7 +18,22 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+And create a .env file for this variables
+
+```bash
+MONGODB_USER=something
+MONGODB_PASSWORD=SOMESTUFF
+# Example: http://localhost:3000
+NEXT_PUBLIC_SITE_URL=your local or remote url of this project
+```
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Demo
+
+You can se the Demo live working here:
+
+- [NextJs - Shop](https://next-js-shop-excersise.vercel.app/)
 
 ## Learn More
 
@@ -28,6 +43,30 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Build
+
+To build execute this on the root of the project:
+
+```bash
+npm run build
+```
+
+## Versions
+
+```bash
+NodeJs: 22.13.0
+```
+
+Dependencies:
+
+```bash
+  dotenv: 16.4.7,
+  mongodb: 6.12.0,
+  next: "14.2.8",
+  react: 18,
+  react-dom: 18
+```
 
 ## Deploy on Vercel
 
